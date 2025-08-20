@@ -6,6 +6,11 @@ authors = [{ name = "{{cookiecutter.author}}", email = "{{cookiecutter.email}}" 
 readme = "README.md"
 keywords = ['python']
 requires-python = ">=3.9,<4.0"
+dependencies = [
+    {% if cookiecutter.pydata == 'y' %}"polars>=1.32.4",
+    "seaborn>=0.13.2",
+    "pyarrow>=15.0.0",{% endif %}
+]
 classifiers = [
     "Intended Audience :: Developers",
     "Programming Language :: Python",
