@@ -33,7 +33,8 @@
             "extensions": [
                 "ms-python.python", 
                 "nefrob.vscode-just-syntax",
-                "quarto.quarto"
+                "quarto.quarto",
+                "tamasfe.even-better-toml"
             ],
             "settings": {
                 "python.testing.pytestArgs": ["tests"],
