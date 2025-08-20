@@ -35,7 +35,8 @@
                 "nefrob.vscode-just-syntax",
                 "quarto.quarto",
                 "tamasfe.even-better-toml",
-                "astral-sh.ty"
+                "astral-sh.ty",
+                "charliermarsh.ruff"
             ],
             "settings": {
                 "python.testing.pytestArgs": ["tests"],
@@ -43,7 +44,21 @@
                 "python.testing.pytestEnabled": true,
                 "python.defaultInterpreterPath": "/workspaces/{{cookiecutter.project_name}}/.venv/bin/python",
                 "python.testing.pytestPath": "/workspaces/{{cookiecutter.project_name}}/.venv/bin/pytest",
-                "python.languageServer": "None" // Use language server from ty
+                "python.languageServer": "None", // Use language server from ty
+                "ruff.nativeServer": "on", // Use native server for ruff
+                "notebook.formatOnSave.enabled": true,
+                "[python]": {
+                    "editor.defaultFormatter": "charliermarsh.ruff", // Use ruff as default formatter
+                    "editor.formatOnSave": true, // Format on save
+                    "editor.codeActionsOnSave": {
+                        "source.fixAll": "explicit", // Fix all errors on save
+                        "source.organizeImports": "explicit" // Organize imports on save
+                    },
+                    "notebook.codeActionsOnSave": {
+                        "notebook.source.fixAll": "explicit", // Fix all errors on save in notebooks
+                        "notebook.source.organizeImports": "explicit" // Organize imports on save in notebooks
+                    }
+                }
             }
         }
     }
