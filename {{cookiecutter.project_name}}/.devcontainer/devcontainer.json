@@ -5,6 +5,7 @@
     // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
     "image": "mcr.microsoft.com/devcontainers/python:1-3.13-bullseye",
     "features": {
+        {% if cookiecutter.quarto == "y" %}
         // Install Quarto CLI
         "ghcr.io/rocker-org/devcontainer-features/quarto-cli:1": {
             "version": "1.7.33",
@@ -14,6 +15,7 @@
         "ghcr.io/rocker-org/devcontainer-features/apt-packages:1": {
             "packages": "chromium python3-tk"
         },
+        {% endif %}
         // Install just
         "ghcr.io/guiyomh/features/just:0.1.0": {
             "version": "1.42.4"
@@ -40,10 +42,12 @@
     // Use 'postCreateCommand' to run commands after the container is created.
     "postCreateCommand": "./.devcontainer/postCreateCommand.sh",
 
+    {% if cookiecutter.quarto == "y" %}
     // Tell quarto to use Python interpreter in the uv virtual environment.
     "containerEnv": {
         "QUARTO_PYTHON": "/workspaces/rate-design-platform/.venv/bin/python"
     },
+    {% endif %}
 
     // Configure tool-specific properties.
     "customizations": {
@@ -51,7 +55,9 @@
             "extensions": [
                 "ms-python.python", 
                 "nefrob.vscode-just-syntax",
+                {% if cookiecutter.quarto == "y" %}
                 "quarto.quarto",
+                {% endif %}
                 "tamasfe.even-better-toml",
                 "astral-sh.ty",
                 "charliermarsh.ruff"
