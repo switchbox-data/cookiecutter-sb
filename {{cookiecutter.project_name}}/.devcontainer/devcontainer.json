@@ -4,9 +4,11 @@
     "name": "{{cookiecutter.project_name}}",
     // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
     "image": "mcr.microsoft.com/devcontainers/python:1-3.13-bullseye",
-    "runArgs": [
-      ],
-    "features": {},
+    "features": {
+        "ghcr.io/guiyomh/features/just:0.1.0": {
+            "version": "1.42.4"
+        }
+    },
 
     // Use 'postCreateCommand' to run commands after the container is created.
     "postCreateCommand": "./.devcontainer/postCreateCommand.sh",
@@ -14,7 +16,11 @@
     // Configure tool-specific properties.
     "customizations": {
         "vscode": {
-            "extensions": ["ms-python.python", "editorconfig.editorconfig"],
+            "extensions": [
+                "ms-python.python", 
+                "editorconfig.editorconfig",
+                "nefrob.vscode-just-syntax"
+            ],
             "settings": {
                 "python.testing.pytestArgs": ["tests"],
                 "python.testing.unittestEnabled": false,
