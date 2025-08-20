@@ -34,14 +34,16 @@
                 "ms-python.python", 
                 "nefrob.vscode-just-syntax",
                 "quarto.quarto",
-                "tamasfe.even-better-toml"
+                "tamasfe.even-better-toml",
+                "astral-sh.ty"
             ],
             "settings": {
                 "python.testing.pytestArgs": ["tests"],
                 "python.testing.unittestEnabled": false,
                 "python.testing.pytestEnabled": true,
                 "python.defaultInterpreterPath": "/workspaces/{{cookiecutter.project_name}}/.venv/bin/python",
-                "python.testing.pytestPath": "/workspaces/{{cookiecutter.project_name}}/.venv/bin/pytest"
+                "python.testing.pytestPath": "/workspaces/{{cookiecutter.project_name}}/.venv/bin/pytest",
+                "python.languageServer": "None" // Use language server from ty
             }
         }
     }
