@@ -102,24 +102,6 @@ def test_tox(cookies, tmp_path):
         assert file_contains_text(f"{result.project_path}/tox.ini", "[tox]")
 
 
-def test_codecov(cookies, tmp_path):
-    with run_within_dir(tmp_path):
-        result = cookies.bake()
-        assert result.exit_code == 0
-        assert is_valid_yaml(result.project_path / ".github" / "workflows" / "main.yml")
-        assert os.path.isfile(f"{result.project_path}/codecov.yaml")
-        assert os.path.isfile(f"{result.project_path}/.github/workflows/validate-codecov-config.yml")
-
-
-def test_not_codecov(cookies, tmp_path):
-    with run_within_dir(tmp_path):
-        result = cookies.bake(extra_context={"codecov": "n"})
-        assert result.exit_code == 0
-        assert is_valid_yaml(result.project_path / ".github" / "workflows" / "main.yml")
-        assert not os.path.isfile(f"{result.project_path}/codecov.yaml")
-        assert not os.path.isfile(f"{result.project_path}/.github/workflows/validate-codecov-config.yml")
-
-
 def test_remove_release_workflow(cookies, tmp_path):
     with run_within_dir(tmp_path):
         result = cookies.bake(extra_context={"publish_to_pypi": "n", "mkdocs": "y"})

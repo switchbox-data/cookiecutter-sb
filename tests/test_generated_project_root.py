@@ -21,7 +21,6 @@ def test_full_structure(cookies, tmp_path):
         "LICENSE",
         "Justfile",
         "README.md",
-        "codecov.yaml",
         "docs",
         "example_project",
         "mkdocs.yml",
