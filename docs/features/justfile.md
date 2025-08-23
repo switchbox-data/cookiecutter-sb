@@ -1,9 +1,8 @@
-# Makefile
+# Justfile
 
-The generated repository will have a `Makefile` available. A list of all
+The generated repository will have a `Justfile` available. A list of all
 available commands that are available can be obtained by running
-`make help` in the terminal. Initially, if all features are selected, the following commands are
-available:
+`just` in the terminal. Initially, if all features are selected, the following commands are available:
 
 ```
 install              Install the uv environment and install the pre-commit hooks

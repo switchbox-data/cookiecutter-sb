@@ -25,5 +25,5 @@ It is also possible to release locally, although it is not recommended.
 To do so, run:
 
 ```bash
-make build-and-publish
+just build-and-publish
 ```

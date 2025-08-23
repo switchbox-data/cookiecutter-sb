@@ -51,7 +51,7 @@ and unittests.
 **publish_to_pypi**
 
 `"y"` or `"n"`. Adds functionality to the
-`Makefile` and Github workflows to make publishing your code as
+`Justfile` and Github workflows to make publishing your code as
 simple as creating a new release release on Github. For more info,
 see
 [Publishing to PyPI](./features/publishing.md).

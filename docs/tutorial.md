@@ -55,7 +55,7 @@ Initially, the CI/CD pipeline will fail for two reasons:
 To fix that, we first install the environment and the pre-commit hooks with:
 
 ```bash
-make install
+just install
 ```
 
 This will generate the `uv.lock` file

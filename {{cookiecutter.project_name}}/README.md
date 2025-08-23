@@ -30,7 +30,7 @@ git push -u origin main
 Then, install the environment and the pre-commit hooks with
 
 ```bash
-make install
+just install
 ```
 
 This will also generate your `uv.lock` file
