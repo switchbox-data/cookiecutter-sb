@@ -50,22 +50,13 @@ dev = [
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
-{% if cookiecutter.layout == "src" -%}
-[tool.hatch.build.targets.wheel]
-packages = ["src/{{cookiecutter.project_slug}}"]
-{%- else -%}
 [tool.hatch.build.targets.wheel]
 packages = ["{{cookiecutter.project_slug}}"]
-{%- endif %}
 
 {% if cookiecutter.type_checker == "mypy" -%}
 [tool.mypy]
 files = [
-    {%- if cookiecutter.layout == "src" -%}
-    "src"
-    {%- else -%}
     "{{cookiecutter.project_slug}}"
-    {%- endif -%}
 ]
 disallow_untyped_defs = true
 disallow_any_unimported = true
@@ -141,10 +132,6 @@ skip_empty = true
 [tool.coverage.run]
 branch = true
 source = [
-    {%- if cookiecutter.layout == "src" -%}
-    "src"
-    {%- else -%}
     "{{cookiecutter.project_slug}}"
-    {%- endif -%}
 ]
 {% endif %}
