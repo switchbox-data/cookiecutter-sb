@@ -9,7 +9,7 @@ requires-python = ">=3.9,<4.0"
 dependencies = [
     {% if cookiecutter.pydata == 'y' %}"polars>=1.32.3",
     "seaborn>=0.13.2",
-    "pyarrow>=15.0.0",{% endif %}
+    "numpy>=2.0.2",{% endif %}
 ]
 classifiers = [
     "Intended Audience :: Developers",
