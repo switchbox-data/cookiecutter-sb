@@ -23,7 +23,11 @@ jobs:
         uses: ./.github/actions/setup-python-env
 
       - name: Run checks
-        run: just check
+        run: |
+          uv lock --locked
+          uv run pre-commit run -a
+          uv run ty check
+          uv run deptry .
 
   tests-and-type-check:
     runs-on: ubuntu-latest

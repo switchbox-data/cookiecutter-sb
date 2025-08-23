@@ -17,8 +17,8 @@ check:
     uv lock --locked
     echo "🚀 Linting code: Running pre-commit"
     uv run pre-commit run -a
-    echo "🚀 Static type checking: Running mypy"
-    uv run ty
+    echo "🚀 Static type checking: Running {% if cookiecutter.type_checker == "mypy" %}mypy{% else %}ty{% endif %}"
+    uv run {% if cookiecutter.type_checker == "mypy" %}mypy{% else %}ty check{% endif %}
     echo "🚀 Checking for obsolete dependencies: Running deptry"
     uv run deptry .
 
