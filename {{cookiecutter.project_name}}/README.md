@@ -27,7 +27,9 @@ git push -u origin main
 
 ### 2. Set Up Your Development Environment
 
-Then, install the environment and the pre-commit hooks with
+If you installed devcontainers, simply open up this repo with VSCode and you'll be prompted to build and open the container.
+
+If you prefer to work outside of a container, install the environment and the pre-commit hooks with
 
 ```bash
 just install
