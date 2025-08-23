@@ -68,9 +68,9 @@ To finalize the set-up for publishing to PyPI, see [here](https://fpgmaas.github
 
 You are now ready to start development on your project!
 
-Please delete **Getting started with you project** of this README.
+Please delete the **"Getting started with your project"** of this README.
 
-## Developing
+## Development commands
 
 To simplify development, this project uses the [just](https://github.com/casey/just) command runner for all major tasks.
 
@@ -140,7 +140,7 @@ The checks will also be run automatically by Github Actions when opening PRs, me
 
 ## Running tests
 
-Our test are written using `pytest` and live in [tests/](tests/). They are checked against multiple python versions using `tox`.
+Our test are written using [pytest](https://docs.pytest.org/en/stable/) and live in [tests/](tests/). They are checked against multiple python versions using [tox](https://tox.wiki/en/).
 
 To run the tests:
 
@@ -151,7 +151,7 @@ just test
 {% if cookiecutter.mkdocs == "y" -%}
 ## Rendering docs
 
-We use `mkdocs` and [mkdocs-material](https://squidfunk.github.io/mkdocs-material/) for writing and rendering docs. The docs are written in markdown and live in [docs/](docs/).
+We use [mkdocs](https://www.mkdocs.org/) and [mkdocs-material](https://squidfunk.github.io/mkdocs-material/) for writing and rendering docs. The docs are written in markdown and live in [docs/](docs/).
 
 To dynamically render the docs as you develop them:
 
@@ -172,6 +172,9 @@ The docs are served by Github Pages out of the `gh-pages` branch. We do not publ
 ## Triggering the CI/CD pipeline
 
 We use Github Actions to run tests, run code quality checks, and publish docs when you open a pull request, merge to main, or when you create a new release.
+
+The Github Action workflows live in `.github/worksflows`.
+
 {%- endif %}
 
 {% if cookiecutter.publish_to_pypi == "y" -%}
