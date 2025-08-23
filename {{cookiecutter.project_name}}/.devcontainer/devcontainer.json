@@ -44,7 +44,7 @@
     {% if cookiecutter.quarto == "y" %}
     // Tell quarto to use Python interpreter in the uv virtual environment.
     "containerEnv": {
-        "QUARTO_PYTHON": "/workspaces/rate-design-platform/.venv/bin/python"
+        "QUARTO_PYTHON": "/workspaces/{{cookiecutter.project_name}}/.venv/bin/python"
     },
     {% endif %}
 
