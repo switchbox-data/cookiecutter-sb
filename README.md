@@ -35,21 +35,23 @@ On your local machine, navigate to the directory in which you want to
 create a project directory, and run the following command:
 
 ```bash
-uvx cookiecutter https://github.com/fpgmaas/cookiecutter-uv.git
+uvx cookiecutter https://github.com/switchbox-data/cookiecutter-sb.git
 ```
 
 or if you don't have `uv` installed yet:
 
 ```bash
 pip install cookiecutter
-cookiecutter https://github.com/fpgmaas/cookiecutter-uv.git
+cookiecutter https://github.com/switchbox-data/cookiecutter-sb.git
 ```
 
-Follow the prompts to configure your project. Once completed, a new directory containing your project will be created. Then navigate into your newly created project directory and follow the instructions in the `README.md` to complete the setup of your project.
+Follow the prompts to configure your project. Once completed, a new directory containing your project will be created. 
+
+Then navigate into your newly created project directory and follow the instructions in the `README.md` to complete the setup of your project.
+
 
 ## Acknowledgements
 
-This project is partially based on [Audrey
-Feldroy\'s](https://github.com/audreyfeldroy)\'s great
-[cookiecutter-pypackage](https://github.com/audreyfeldroy/cookiecutter-pypackage)
+This project is based on [Florian Mass\'s](https://github.com/fpgmaas)\'s great
+[cookiecutter-uv](https://github.com/fpgmaas/cookiecutter-uv?tab=readme-ov-file)
 repository.
