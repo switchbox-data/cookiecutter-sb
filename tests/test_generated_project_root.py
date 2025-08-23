@@ -18,7 +18,6 @@ def test_full_structure(cookies, tmp_path):
         ".gitignore",
         ".pre-commit-config.yaml",
         "CONTRIBUTING.md",
-        "Dockerfile",
         "LICENSE",
         "Justfile",
         "README.md",

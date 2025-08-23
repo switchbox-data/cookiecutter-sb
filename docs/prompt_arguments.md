@@ -72,9 +72,6 @@ will be deployed to the `gh-pages` branch.
 
 `"y"` or `"n"`. Adds code coverage checks with [codecov](https://about.codecov.io/).
 
-**dockerfile**
-
-`"y"` or `"n"`. Adds a simple [Dockerfile](https://docker.com).
 
 **devcontainer**
 
