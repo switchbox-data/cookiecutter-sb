@@ -78,3 +78,6 @@ if __name__ == "__main__":
         remove_file("LICENSE_BSD")
         remove_file("LICENSE_ISC")
         remove_file("LICENSE_APACHE")
+
+    if "{{cookiecutter.issue_template}}" != "y":
+        remove_dir(".github/ISSUE_TEMPLATE/")

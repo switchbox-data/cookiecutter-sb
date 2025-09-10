@@ -48,5 +48,9 @@
   "pydata": [
     "y",
     "n"
+  ],
+  "issue_template": [
+    "y",
+    "n"
   ]
 } 
