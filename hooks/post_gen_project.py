@@ -24,6 +24,22 @@ def move_dir(src: str, target: str) -> None:
 
 
 if __name__ == "__main__":
+    # Handle language selection logic
+    languages = "{{cookiecutter.languages}}"
+    python_enabled = languages in ["python", "both"]
+    r_enabled = languages in ["r", "both"]
+    
+    if not python_enabled:
+        # Remove Python-specific files
+        remove_file("pyproject.toml")
+        remove_file("tox.ini")
+        remove_dir("{{cookiecutter.project_slug}}")
+        remove_dir("tests")
+        # Remove Python-related GitHub Actions
+        if "{{cookiecutter.include_github_actions}}" == "y":
+            remove_file(".github/workflows/main.yml")
+            remove_file(".github/workflows/on-release-main.yml")
+    
     if "{{cookiecutter.include_github_actions}}" != "y":
         remove_dir(".github")
     else:
@@ -40,7 +56,7 @@ if __name__ == "__main__":
     # Handle notebooks directory based on quarto and jupyter selections
     quarto_enabled = "{{cookiecutter.quarto}}" == "y"
     jupyter_enabled = "{{cookiecutter.jupyter}}" == "y"
-    pydata_enabled = "{{cookiecutter.pydata}}" == "y"
+    pydata_enabled = "{{cookiecutter.pydata}}" == "y" and python_enabled
 
     if not quarto_enabled and not jupyter_enabled:
         # No notebooks at all

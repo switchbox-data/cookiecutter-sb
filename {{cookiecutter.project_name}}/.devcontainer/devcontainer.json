@@ -50,18 +50,21 @@
     "customizations": {
         "vscode": {
             "extensions": [
+                {%- if cookiecutter.languages in ["python", "both"] %}
                 "ms-python.python",
-                "nefrob.vscode-just-syntax",
                 "tamasfe.even-better-toml",
                 "charliermarsh.ruff",
+                {%- endif %}
+                "nefrob.vscode-just-syntax",
                 {%- if cookiecutter.quarto == "y" %}
                 "quarto.quarto",{%- endif %}
                 {%- if cookiecutter.jupyter == "y" or (cookiecutter.quarto == "y" and cookiecutter.pydata == "y") %}
                 "ms-toolsai.jupyter",{%- endif %}
-                {%- if cookiecutter.type_checker == "ty" %}
+                {%- if cookiecutter.languages in ["python", "both"] and cookiecutter.type_checker == "ty" %}
                 "astral-sh.ty",{%- endif %}
             ],
             "settings": {
+                {%- if cookiecutter.languages in ["python", "both"] %}
                 "python.testing.pytestArgs": ["tests"],
                 "python.testing.unittestEnabled": false,
                 "python.testing.pytestEnabled": true,
@@ -70,8 +73,10 @@
                 "ruff.nativeServer": "on", // Use native server for ruff
                 {%- if cookiecutter.type_checker == "ty" %}// Use language server from ty
                 "python.languageServer": "None",{%- endif %}
+                {%- endif %}
                 {%- if cookiecutter.jupyter == "y" %}
                 "notebook.formatOnSave.enabled": true,{%- endif %}
+                {%- if cookiecutter.languages in ["python", "both"] %}
                 "[python]": {
                     "editor.defaultFormatter": "charliermarsh.ruff", // Use ruff as default formatter
                     "editor.formatOnSave": true, // Format on save
@@ -87,6 +92,7 @@
                     }
                     {%- endif %}
                 }
+                {%- endif %}
             }
         }
     }

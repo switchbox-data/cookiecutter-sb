@@ -14,6 +14,7 @@ EMAIL="hello@switch.box"
 AUTHOR_GITHUB_HANDLE="switchbox-data"
 PROJECT_NAME="no-notebooks-test"
 PROJECT_DESCRIPTION="This is a template repository for Python projects that use uv for their dependency management."
+LANGUAGES="both"
 INCLUDE_GITHUB_ACTIONS="n"
 PUBLISH_TO_PYPI="y"
 DEPTRY="n"
@@ -43,6 +44,7 @@ uvx cookiecutter "$TEMPLATE_PATH" \
     project_name="$PROJECT_NAME" \
     project_slug="$PROJECT_SLUG" \
     project_description="$PROJECT_DESCRIPTION" \
+    languages="$LANGUAGES" \
     include_github_actions="$INCLUDE_GITHUB_ACTIONS" \
     publish_to_pypi="$PUBLISH_TO_PYPI" \
     deptry="$DEPTRY" \

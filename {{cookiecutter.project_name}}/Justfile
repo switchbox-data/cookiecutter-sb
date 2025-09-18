@@ -7,6 +7,7 @@ default:
     @just --list
 
 
+{%- if cookiecutter.languages in ["python", "both"] %}
 # =============================================================================
 # 🔍 CODE QUALITY & TESTING
 # =============================================================================
@@ -28,6 +29,7 @@ check:
 test:
     echo "🚀 Testing code: Running pytest"
     uv run python -m pytest --doctest-modules
+{%- endif %}
 {%- if cookiecutter.mkdocs == "y" %}
 
 
@@ -44,7 +46,7 @@ docs-test:
 docs:
     uv run mkdocs serve
 {%- endif %}
-{%- if cookiecutter.publish_to_pypi == "y" %}
+{%- if cookiecutter.languages in ["python", "both"] and cookiecutter.publish_to_pypi == "y" %}
 
 
 # =============================================================================
@@ -72,6 +74,7 @@ build-and-publish: build publish
 {%- endif %}
 
 
+{%- if cookiecutter.languages in ["python", "both"] %}
 # =============================================================================
 # 🏗️  DEVELOPMENT ENVIRONMENT SETUP
 # =============================================================================
@@ -81,3 +84,4 @@ build-and-publish: build publish
 install:
     echo "🚀 Creating virtual environment using uv"
     .devcontainer/postCreateCommand.sh
+{%- endif %}
