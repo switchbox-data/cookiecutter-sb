@@ -6,6 +6,7 @@
 default:
     @just --list
 
+
 # =============================================================================
 # 🔍 CODE QUALITY & TESTING
 # =============================================================================
@@ -19,15 +20,18 @@ check:
     uv run pre-commit run -a
     echo "🚀 Static type checking: Running {% if cookiecutter.type_checker == "mypy" %}mypy{% else %}ty{% endif %}"
     uv run {% if cookiecutter.type_checker == "mypy" %}mypy{% else %}ty check{% endif %}
-    {% if cookiecutter.deptry == "y" %}echo "🚀 Checking for obsolete dependencies: Running deptry"
+    {%- if cookiecutter.deptry == "y" %}
+    echo "🚀 Checking for obsolete dependencies: Running deptry"
     uv run deptry .{% endif %}
 
 # Test the code with pytest
 test:
     echo "🚀 Testing code: Running pytest"
     uv run python -m pytest --doctest-modules
+{%- if cookiecutter.mkdocs == "y" %}
 
-{% if cookiecutter.mkdocs == "y" } =============================================================================
+
+# =============================================================================
 # 📚 DOCUMENTATION
 # =============================================================================
 # These commands help you build and serve project documentation
@@ -39,9 +43,11 @@ docs-test:
 # Build and serve the documentation
 docs:
     uv run mkdocs serve
-{% endif %}
+{%- endif %}
+{%- if cookiecutter.publish_to_pypi == "y" %}
 
-{% if cookiecutter.publish_to_pypi == "y" }# =============================================================================
+
+# =============================================================================
 # 📦 BUILD & RELEASE
 # =============================================================================
 # These commands build your package and publish it to PyPI
@@ -63,7 +69,8 @@ publish:
 
 # Build and publish
 build-and-publish: build publish
-{% endif %}
+{%- endif %}
+
 
 # =============================================================================
 # 🏗️  DEVELOPMENT ENVIRONMENT SETUP

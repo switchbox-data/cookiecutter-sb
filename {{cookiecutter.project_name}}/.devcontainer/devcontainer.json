@@ -4,7 +4,12 @@
     "name": "{{cookiecutter.project_name}}",
     "image": "mcr.microsoft.com/devcontainers/python:1-3.13-bookworm",
     "features": {
-        {% if cookiecutter.quarto == "y" %}// Install Quarto CLI
+        // Install just
+        "ghcr.io/guiyomh/features/just:0.1.0": {
+            "version": "1.42.4"
+        },
+        {%- if cookiecutter.quarto == "y" %}
+        // Install Quarto CLI
         "ghcr.io/rocker-org/devcontainer-features/quarto-cli:1": {
             "version": "1.7.33",
             "installChromium": true
@@ -13,18 +18,16 @@
         "ghcr.io/rocker-org/devcontainer-features/apt-packages:1": {
             "packages": "chromium python3-tk"
         },
-        {% endif %}// Install just
-        "ghcr.io/guiyomh/features/just:0.1.0": {
-            "version": "1.42.4"
-        },
-        {% if cookiecutter.aws_cli == "y" %}// Install AWS CLI
+        {%- endif %}
+        {%- if cookiecutter.aws_cli == "y" %}
+        // Install AWS CLI
         "ghcr.io/devcontainers/features/aws-cli:1": {
             "version": "2.27.4"
         }
-        {% endif %}
+        {%- endif %}
     },
 
-    {% if cookiecutter.aws_cli == "y" %}"initializeCommand": "mkdir -p ${localEnv:HOME}/.aws",  // Container won't start if .aws dir is missing
+    {%- if cookiecutter.aws_cli == "y" %}"initializeCommand": "mkdir -p ${localEnv:HOME}/.aws",  // Container won't start if .aws dir is missing
     "mounts": [
         "source=${localEnv:HOME}/.aws,target=/home/vscode/.aws,type=bind,consistency=cached"
     ],
@@ -32,16 +35,16 @@
     "remoteEnv": {
         "AWS_REGION": "us-west-2"
     },
-    {% endif %}
+    {%- endif %}
 
     // Use 'postCreateCommand' to run commands after the container is created.
     "postCreateCommand": "./.devcontainer/postCreateCommand.sh",
 
-    {% if cookiecutter.quarto == "y" %}// Tell quarto to use Python interpreter in the uv virtual environment.
+    {%- if cookiecutter.quarto == "y" %}// Tell quarto to use Python interpreter in the uv virtual environment.
     "containerEnv": {
         "QUARTO_PYTHON": "/workspaces/{{cookiecutter.project_name}}/.venv/bin/python"
     },
-    {% endif %}
+    {%- endif %}
 
     // Configure tool-specific properties.
     "customizations": {
@@ -50,10 +53,13 @@
                 "ms-python.python", 
                 "nefrob.vscode-just-syntax",
                 "tamasfe.even-better-toml",
-                "charliermarsh.ruff"
-                {% if cookiecutter.quarto == "y" %}"quarto.quarto",{% endif %}
-                {% if cookiecutter.jupyter == "y" or (cookiecutter.quarto == "y" and cookiecutter.pydata == "y") %}"ms-toolsai.jupyter",{% endif %}
-                {% if cookiecutter.type_checker == "ty" %}"astral-sh.ty",{% endif %}
+                "charliermarsh.ruff",
+                {%- if cookiecutter.quarto == "y" %}
+                "quarto.quarto",{%- endif %}
+                {%- if cookiecutter.jupyter == "y" or (cookiecutter.quarto == "y" and cookiecutter.pydata == "y") %}
+                "ms-toolsai.jupyter",{%- endif %}
+                {%- if cookiecutter.type_checker == "ty" %}
+                "astral-sh.ty",{%- endif %}
             ],
             "settings": {
                 "python.testing.pytestArgs": ["tests"],
@@ -62,9 +68,10 @@
                 "python.defaultInterpreterPath": "/workspaces/{{cookiecutter.project_name}}/.venv/bin/python",
                 "python.testing.pytestPath": "/workspaces/{{cookiecutter.project_name}}/.venv/bin/pytest",
                 "ruff.nativeServer": "on", // Use native server for ruff
-                {% if cookiecutter.type_checker == "ty" % }// Use language server from ty
-                "python.languageServer": "None",{% endif %}
-                {% if cookiecutter.jupyter == "y" %}"notebook.formatOnSave.enabled": true,{% endif %}
+                {%- if cookiecutter.type_checker == "ty" %}// Use language server from ty
+                "python.languageServer": "None",{%- endif %}
+                {%- if cookiecutter.jupyter == "y" %}
+                "notebook.formatOnSave.enabled": true,{%- endif %}
                 "[python]": {
                     "editor.defaultFormatter": "charliermarsh.ruff", // Use ruff as default formatter
                     "editor.formatOnSave": true, // Format on save
@@ -72,12 +79,13 @@
                         "source.fixAll": "explicit", // Fix all errors on save
                         "source.organizeImports": "explicit" // Organize imports on save
                     },
-                    {% if cookiecutter.jupyter == "y" %}"notebook.formatOnSave.enabled": true,
+                    {%- if cookiecutter.jupyter == "y" %}
+                    "notebook.formatOnSave.enabled": true,
                     "notebook.codeActionsOnSave": {
                         "notebook.source.fixAll": "explicit", // Fix all errors on save in notebooks
                         "notebook.source.organizeImports": "explicit" // Organize imports on save in notebooks
                     }
-                    {% endif %}
+                    {%- endif %}
                 }
             }
         }
