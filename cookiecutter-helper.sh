@@ -23,8 +23,8 @@ TYPE_CHECKER="ty"
 OPEN_SOURCE_LICENSE="MIT license"
 AWS="y"
 QUARTO="y"
-JUPYTER="n"
-PYDATA="y"
+JUPYTER="y"
+PYDATA="n"
 ISSUE_TEMPLATE="y"
 
 # Generate project slug from project name

@@ -1,0 +1,30 @@
+project:
+  type: website
+  title: "{{cookiecutter.project_name}}"
+  render:
+    - md_example.qmd
+    - index.qmd
+    {%- if cookiecutter.pydata == "y" %}
+    - py_example.qmd
+    {%- endif %}
+
+website:
+  title: "{{cookiecutter.project_name}}"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: md_example.qmd
+        text: Markdown Example
+      {%- if cookiecutter.pydata == "y" %}
+      - href: py_example.qmd
+        text: Python Example
+      {%- endif %}
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+
+execute:
+  freeze: auto

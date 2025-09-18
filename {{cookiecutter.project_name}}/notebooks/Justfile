@@ -1,0 +1,77 @@
+# =============================================================================
+# 📓 NOTEBOOKS
+# =============================================================================
+# Commands for working with notebooks in this directory
+
+# Show available commands
+default:
+    @just --list
+
+{% if cookiecutter.quarto == "y" -%}
+# =============================================================================
+# 📄 QUARTO
+# =============================================================================
+
+# Preview the Quarto website (live reload)
+preview:
+    echo "🚀 Starting Quarto preview server..."
+    quarto preview
+
+# Render all Quarto documents to HTML
+render:
+    echo "🚀 Rendering Quarto documents..."
+    quarto render
+
+# Publish Quarto site to GitHub Pages (if configured)
+publish:
+    echo "🚀 Publishing Quarto site to GitHub Pages..."
+    quarto publish gh-pages
+
+# Clean Quarto generated files
+clean:
+    echo "🚀 Cleaning Quarto generated files..."
+    quarto clean
+
+# Create a new Quarto document (.qmd)
+new NAME:
+    {% raw %}echo "🚀 Creating new Quarto document: {{NAME}}.qmd"
+    touch {{NAME}}.qmd
+    echo "---\ntitle: \"{{NAME}}\"\nauthor: \"{% endraw %}{{cookiecutter.author}}{% raw %}\"\ndate: today\nformat: html\n---\n\n# {{NAME}}\n\nYour content here..." > {{NAME}}.qmd{% endraw %}
+
+# Convert Jupyter notebook to Quarto format
+convert NOTEBOOK:
+    {% raw %}echo "🚀 Converting {{NOTEBOOK}} to Quarto format..."
+    quarto convert {{NOTEBOOK}}{% endraw %}
+
+{% endif -%}
+{% if cookiecutter.jupyter == "y" -%}
+# =============================================================================
+# 📒 JUPYTER
+# =============================================================================
+
+# Start Jupyter Lab server
+lab:
+    echo "🚀 Starting Jupyter Lab..."
+    uv run jupyter lab --notebook-dir=.
+
+# Start Jupyter Notebook server
+notebook:
+    echo "🚀 Starting Jupyter Notebook..."
+    uv run jupyter notebook --notebook-dir=.
+
+# List running Jupyter servers
+list:
+    echo "🚀 Listing Jupyter servers..."
+    uv run jupyter server list
+
+# Stop all Jupyter servers
+stop:
+    echo "🚀 Stopping Jupyter servers..."
+    uv run jupyter server stop
+
+# Create a new Jupyter notebook
+new-nb NAME:
+    {% raw %}echo "🚀 Creating new Jupyter notebook: {{NAME}}.ipynb"
+    echo '{"cells":[],"metadata":{"kernelspec":{"display_name":"Python 3","language":"python","name":"python3"},"language_info":{"name":"python","version":"3.13.0"}},"nbformat":4,"nbformat_minor":4}' | jq '.' > {{NAME}}.ipynb{% endraw %}
+
+{% endif -%}

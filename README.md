@@ -16,7 +16,7 @@ This is a modern Cookiecutter template that can be used to initiate a Python pro
 - Pre-commit hooks with [pre-commit](https://pre-commit.com/)
 - Code quality with [ruff](https://github.com/charliermarsh/ruff), [mypy](https://mypy.readthedocs.io/en/stable/)/[ty](https://docs.astral.sh/ty/) and [deptry](https://github.com/fpgmaas/deptry/).
 - Publishing to [PyPI](https://pypi.org) by creating a new release on GitHub
-- Testing and coverage with [pytest](https://docs.pytest.org/en/7.1.x/) 
+- Testing and coverage with [pytest](https://docs.pytest.org/en/7.1.x/)
 - Documentation with [MkDocs](https://www.mkdocs.org/)
 - Compatibility testing for multiple versions of Python with [tox-uv](https://github.com/tox-dev/tox-uv)
 - Development environment with [VSCode devcontainers](https://code.visualstudio.com/docs/devcontainers/containers)
@@ -45,7 +45,7 @@ pip install cookiecutter
 cookiecutter https://github.com/switchbox-data/cookiecutter-sb.git
 ```
 
-Follow the prompts to configure your project. Once completed, a new directory containing your project will be created. 
+Follow the prompts to configure your project. Once completed, a new directory containing your project will be created.
 
 Then navigate into your newly created project directory and follow the instructions in the `README.md` to complete the setup of your project.
 

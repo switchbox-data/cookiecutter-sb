@@ -50,7 +50,7 @@
     "customizations": {
         "vscode": {
             "extensions": [
-                "ms-python.python", 
+                "ms-python.python",
                 "nefrob.vscode-just-syntax",
                 "tamasfe.even-better-toml",
                 "charliermarsh.ruff",

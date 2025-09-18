@@ -37,6 +37,43 @@ if __name__ == "__main__":
     if "{{cookiecutter.devcontainer}}" != "y":
         remove_dir(".devcontainer")
 
+    # Handle notebooks directory based on quarto and jupyter selections
+    quarto_enabled = "{{cookiecutter.quarto}}" == "y"
+    jupyter_enabled = "{{cookiecutter.jupyter}}" == "y"
+    pydata_enabled = "{{cookiecutter.pydata}}" == "y"
+
+    if not quarto_enabled and not jupyter_enabled:
+        # No notebooks at all
+        remove_dir("notebooks")
+    else:
+        # Always remove R example (not supported yet)
+        remove_file("notebooks/r_example.qmd")
+
+        # Handle Quarto files
+        if not quarto_enabled:
+            # Remove all Quarto files
+            remove_file("notebooks/_quarto.yml")
+            remove_file("notebooks/index.qmd")
+            remove_file("notebooks/md_example.qmd")
+            remove_file("notebooks/py_example.qmd")
+        else:
+            # Keep Quarto files, but remove Python example if pydata not selected
+            if not pydata_enabled:
+                remove_file("notebooks/py_example.qmd")
+
+        # Note: Justfile is kept regardless of quarto/jupyter selection
+        # because it contains conditional sections for both
+
+        # Handle Jupyter files
+        if not jupyter_enabled:
+            # Remove all Jupyter files
+            remove_file("notebooks/md_example.ipynb")
+            remove_file("notebooks/py_example.ipynb")
+        else:
+            # Keep Jupyter files, but remove Python example if pydata not selected
+            if not pydata_enabled:
+                remove_file("notebooks/py_example.ipynb")
+
     if "{{cookiecutter.open_source_license}}" == "MIT license":
         move_file("LICENSE_MIT", "LICENSE")
         remove_file("LICENSE_BSD")

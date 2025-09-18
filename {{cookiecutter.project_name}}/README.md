@@ -90,7 +90,7 @@ just --list
 
 {% if cookiecutter.devcontainer == "y" -%}
 ### With devcontainers
-Given that many projects require system dependencies, the easiest way to define and distribute a reproducible development environment is with [devcontainers](https://containers.dev/). 
+Given that many projects require system dependencies, the easiest way to define and distribute a reproducible development environment is with [devcontainers](https://containers.dev/).
 
 To load this project's devcontainer, open up the repo in VSCode (or a VSCode fork like Cursor or Positron.)
 

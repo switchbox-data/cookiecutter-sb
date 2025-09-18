@@ -48,7 +48,7 @@ jobs:
           python-version: {% raw %}${{ matrix.python-version }}{% endraw %}
 
       - name: Run tests
-        run: uv run python -m pytest tests 
+        run: uv run python -m pytest tests
 
       - name: Check typing
         run: uv run {% if cookiecutter.type_checker == "mypy" %}mypy{% else %}ty check{% endif %}
