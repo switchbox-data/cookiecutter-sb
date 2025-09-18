@@ -26,8 +26,8 @@ jobs:
         run: |
           uv lock --locked
           uv run pre-commit run -a
-          uv run ty check
-          uv run deptry .
+          uv run {% if cookiecutter.type_checker == "mypy" %}mypy{% else %}ty check{% endif %}
+          {% if cookiecutter.deptry == "y" %}uv run deptry .{% endif %}
 
   tests-and-type-check:
     runs-on: ubuntu-latest
@@ -54,7 +54,6 @@ jobs:
         run: uv run {% if cookiecutter.type_checker == "mypy" %}mypy{% else %}ty check{% endif %}
 
 {%- if cookiecutter.mkdocs == "y" %}
-
   check-docs:
     runs-on: ubuntu-latest
     steps:
