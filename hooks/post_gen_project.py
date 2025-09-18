@@ -28,7 +28,7 @@ if __name__ == "__main__":
     languages = "{{cookiecutter.languages}}"
     python_enabled = languages in ["python", "both"]
     r_enabled = languages in ["r", "both"]
-    
+
     if not python_enabled:
         # Remove Python-specific files
         remove_file("pyproject.toml")
@@ -39,7 +39,7 @@ if __name__ == "__main__":
         if "{{cookiecutter.include_github_actions}}" == "y":
             remove_file(".github/workflows/main.yml")
             remove_file(".github/workflows/on-release-main.yml")
-    
+
     if "{{cookiecutter.include_github_actions}}" != "y":
         remove_dir(".github")
     else:

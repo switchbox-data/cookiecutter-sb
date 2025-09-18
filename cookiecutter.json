@@ -7,22 +7,49 @@
   "project_description": "This is a template repository for Python projects that use uv for their dependency management.",
   "languages": [
     "python",
-    "r", 
+    "r",
     "both"
   ],
-  "include_github_actions": [
+  "type_checker": {
+    "choices": [
+      "mypy",
+      "ty"
+    ],
+    "when": "{{cookiecutter.languages}} in ['python', 'both']"
+  },
+  "pydata": {
+    "choices": [
+      "y",
+      "n"
+    ],
+    "when": "{{cookiecutter.languages}} in ['python', 'both']"
+  },
+  "publish_to_pypi": {
+    "choices": [
+      "y",
+      "n"
+    ],
+    "when": "{{cookiecutter.languages}} in ['python', 'both']"
+  },
+  "deptry": {
+    "choices": [
+      "y",
+      "n"
+    ],
+    "when": "{{cookiecutter.languages}} in ['python', 'both']"
+  },
+  "mkdocs": {
+    "choices": [
+      "y",
+      "n"
+    ],
+    "when": "{{cookiecutter.languages}} in ['python', 'both']"
+  },
+  "quarto": [
     "y",
     "n"
   ],
-  "publish_to_pypi": [
-    "y",
-    "n"
-  ],
-  "deptry": [
-    "y",
-    "n"
-  ],
-  "mkdocs": [
+  "jupyter": [
     "y",
     "n"
   ],
@@ -30,9 +57,9 @@
     "y",
     "n"
   ],
-  "type_checker": [
-    "mypy",
-    "ty"
+  "include_github_actions": [
+    "y",
+    "n"
   ],
   "open_source_license": [
     "MIT license",
@@ -43,18 +70,6 @@
     "Not open source"
   ],
   "aws": [
-    "y",
-    "n"
-  ],
-  "quarto": [
-    "y",
-    "n"
-  ],
-  "jupyter": [
-    "y",
-    "n"
-  ],
-  "pydata": [
     "y",
     "n"
   ],
