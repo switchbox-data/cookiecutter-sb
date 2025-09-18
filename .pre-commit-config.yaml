@@ -6,16 +6,15 @@ repos:
       - id: check-merge-conflict
       - id: end-of-file-fixer
       - id: trailing-whitespace
-      # Temporarily disabled due to template files with Jinja2 syntax
-      # - id: check-json
-      #   exclude: ^({{cookiecutter.project_name}}/.*|\.devcontainer/devcontainer\.json)$
-      # - id: pretty-format-json
-      #   exclude: ^({{cookiecutter.project_name}}/.*|\.devcontainer/devcontainer\.json)$
-      #   args: [--autofix, --no-sort-keys]
-      # - id: check-toml
-      #   exclude: ^{{cookiecutter.project_name}}/.*
-      # - id: check-yaml
-      #   exclude: ^{{cookiecutter.project_name}}/.*
+      - id: check-json
+        files: ^(cookiecutter_uv/|tests/|docs/).*\.json$
+      - id: pretty-format-json
+        files: ^(cookiecutter_uv/|tests/|docs/).*\.json$
+        args: [--autofix, --no-sort-keys]
+      - id: check-toml
+        files: ^(cookiecutter_uv/|tests/|docs/).*\.toml$
+      - id: check-yaml
+        files: ^(cookiecutter_uv/|tests/|docs/).*\.ya?ml$
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: "v0.12.7"
