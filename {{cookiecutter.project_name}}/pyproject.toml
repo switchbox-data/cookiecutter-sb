@@ -7,9 +7,23 @@ readme = "README.md"
 keywords = ['python']
 requires-python = ">=3.9,<4.0"
 dependencies = [
-    {% if cookiecutter.pydata == 'y' %}"polars>=1.32.3",
+    {%- if cookiecutter.pydata == 'y' %}
+    "polars>=1.32.3",
+    "pyarrow>=21.0.0",
     "seaborn>=0.13.2",
-    "numpy>=2.0.2",{% endif %}
+    "numpy>=2.0.2",
+    {%- endif %}
+    {%- if cookiecutter.quarto == 'y' and cookiecutter.pydata == 'y' %}
+    "ipykernel>=6.30.1", # quarto needs to render / quarto extension needs to run python notebooks
+    "nbformat>=5.10.4",  # quarto needs to render python notebooks
+    "nbclient>=0.10.2",  # quarto needs to render python notebooks
+    {%- endif %}
+    {%- if cookiecutter.jupyter == 'y' %}
+    "jupyter>=1.1.1",
+    {%- endif %}
+    {%- if cookiecutter.aws == 'y' %}
+    "boto3>=1.7.84",
+    {%- endif %}
 ]
 classifiers = [
     "Intended Audience :: Developers",
@@ -33,16 +47,20 @@ dev = [
     "pytest>=7.2.0",
     "pre-commit>=2.20.0",
     "tox-uv>=1.11.3",
-    {% if cookiecutter.deptry == 'y' %}"deptry>=0.23.0",{% endif %}
-    {% if cookiecutter.type_checker == "mypy" -%}
-        "mypy>=0.991",
-    {%- elif cookiecutter.type_checker == "ty" -%}
-        "ty>=0.0.1a16",
-    {%- endif %}
     "ruff>=0.11.5",
-    {% if cookiecutter.mkdocs == 'y' %}"mkdocs>=1.4.2",
+    {%- if cookiecutter.type_checker == "mypy" %}
+    "mypy>=0.991",
+    {%- elif cookiecutter.type_checker == "ty" %}
+    "ty>=0.0.1a16",
+    {%- endif %}
+    {%- if cookiecutter.deptry == 'y' %}
+    "deptry>=0.23.0",
+    {%- endif %}
+    {%- if cookiecutter.mkdocs == 'y' %}
+    "mkdocs>=1.4.2",
     "mkdocs-material>=8.5.10",
-    "mkdocstrings[python]>=0.26.1",{% endif %}
+    "mkdocstrings[python]>=0.26.1",
+    {%- endif %}
 ]
 
 [build-system]
@@ -67,7 +85,7 @@ show_error_codes = true
 {%- else -%}
 [tool.ty.environment]
 python = "./.venv"
-python-version = "3.9"
+python-version = "3.13"
 {%- endif %}
 
 [tool.pytest.ini_options]
