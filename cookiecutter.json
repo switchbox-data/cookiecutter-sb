@@ -10,46 +10,31 @@
     "r",
     "both"
   ],
-  "type_checker": {
-    "choices": [
-      "mypy",
-      "ty"
-    ],
-    "when": "{{cookiecutter.languages}} in ['python', 'both']"
-  },
-  "pydata": {
-    "choices": [
-      "y",
-      "n"
-    ],
-    "when": "{{cookiecutter.languages}} in ['python', 'both']"
-  },
-  "publish_to_pypi": {
-    "choices": [
-      "y",
-      "n"
-    ],
-    "when": "{{cookiecutter.languages}} in ['python', 'both']"
-  },
-  "deptry": {
-    "choices": [
-      "y",
-      "n"
-    ],
-    "when": "{{cookiecutter.languages}} in ['python', 'both']"
-  },
-  "mkdocs": {
-    "choices": [
-      "y",
-      "n"
-    ],
-    "when": "{{cookiecutter.languages}} in ['python', 'both']"
-  },
+  "type_checker": [
+    "mypy",
+    "ty"
+  ],
+  "pydata": [
+    "y",
+    "n"
+  ],
+  "publish_to_pypi": [
+    "y",
+    "n"
+  ],
+  "deptry": [
+    "y",
+    "n"
+  ],
   "quarto": [
     "y",
     "n"
   ],
   "jupyter": [
+    "y",
+    "n"
+  ],
+  "mkdocs": [
     "y",
     "n"
   ],
