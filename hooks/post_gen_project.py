@@ -8,11 +8,15 @@ PROJECT_DIRECTORY = os.path.realpath(os.path.curdir)
 
 
 def remove_file(filepath: str) -> None:
-    os.remove(os.path.join(PROJECT_DIRECTORY, filepath))
+    full_path = os.path.join(PROJECT_DIRECTORY, filepath)
+    if os.path.exists(full_path):
+        os.remove(full_path)
 
 
 def remove_dir(filepath: str) -> None:
-    shutil.rmtree(os.path.join(PROJECT_DIRECTORY, filepath))
+    full_path = os.path.join(PROJECT_DIRECTORY, filepath)
+    if os.path.exists(full_path):
+        shutil.rmtree(full_path)
 
 
 def move_file(filepath: str, target: str) -> None:
